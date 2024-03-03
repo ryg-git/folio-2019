@@ -134,11 +134,29 @@ export default class Materials
         this.shades.items.metal.uniforms.matcap.value = this.resources.items.matcapMetalTexture
         this.items.metal = this.shades.items.metal
 
-        // // Gold
-        // this.shades.items.gold = new MatcapMaterial()
-        // this.shades.items.gold.name = 'shadeGold'
-        // this.shades.items.gold.uniforms.matcap.value = this.resources.items.matcapGoldTexture
-        // this.items.gold = this.shades.items.gold
+        // Gold
+        this.shades.items.gold = new MatcapMaterial()
+        this.shades.items.gold.name = 'shadeGold'
+        this.shades.items.gold.uniforms.matcap.value = this.resources.items.matcapGoldTexture
+        this.items.gold = this.shades.items.gold
+
+        // PinkSY
+        this.shades.items.pinkSY = new MatcapMaterial()
+        this.shades.items.pinkSY.name = 'shadePinkSY'
+        this.shades.items.pinkSY.uniforms.matcap.value = this.resources.items.matcapGoldTexture
+        this.items.pinkSY = this.shades.items.pinkSY
+
+        // PinkSY
+        this.shades.items.darkBlueSY = new MatcapMaterial()
+        this.shades.items.darkBlueSY.name = 'shadeDarkBlueSY'
+        this.shades.items.darkBlueSY.uniforms.matcap.value = this.resources.items.matcapGoldTexture
+        this.items.darkBlueSY = this.shades.items.darkBlueSY
+
+        // PinkSY
+        this.shades.items.purpleSY = new MatcapMaterial()
+        this.shades.items.purpleSY.name = 'shadePurpleSY'
+        this.shades.items.purpleSY.uniforms.matcap.value = this.resources.items.matcapGoldTexture
+        this.items.purpleSY = this.shades.items.purpleSY
 
         // Update materials uniforms
         this.shades.updateMaterials = () =>

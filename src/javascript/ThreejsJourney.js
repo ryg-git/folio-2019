@@ -11,11 +11,11 @@ export default class ThreejsJourney
 
         // Setup
         this.$container = document.querySelector('.js-threejs-journey')
-        this.$messages = [...this.$container.querySelectorAll('.js-message')]
-        this.$yes = this.$container.querySelector('.js-yes')
-        this.$no = this.$container.querySelector('.js-no')
+        // this.$messages = [...this.$container.querySelectorAll('.js-message')]
+        // this.$yes = this.$container.querySelector('.js-yes')
+        // this.$no = this.$container.querySelector('.js-no')
         this.step = 0
-        this.maxStep = this.$messages.length - 1
+        // this.maxStep = this.$messages.length - 1
         this.seenCount = window.localStorage.getItem('threejsJourneySeenCount') || 0
         this.seenCount = parseInt(this.seenCount)
         this.shown = false
@@ -29,7 +29,7 @@ export default class ThreejsJourney
         if(this.prevent)
             return
 
-        this.setYesNo()
+        // this.setYesNo()
         this.setLog()
 
         this.time.on('tick', () =>
@@ -127,10 +127,10 @@ export default class ThreejsJourney
 //             `,
 //             'color: #705df2;'
 //         )
-        console.log('%cWhat are you doing here?! you sneaky developer...', 'color: #32ffce');
-        console.log('%cDo you want to learn how this portfolio has been made?', 'color: #32ffce');
-        console.log('%cCheckout Three.js Journey 👉 https://threejs-journey.com?c=p2', 'color: #32ffce');
-        console.log('%c— Bruno', 'color: #777777');
+        // console.log('%cWhat are you doing here?! you sneaky developer...', 'color: #32ffce');
+        // console.log('%cDo you want to learn how this portfolio has been made?', 'color: #32ffce');
+        // console.log('%cCheckout Three.js Journey 👉 https://threejs-journey.com?c=p2', 'color: #32ffce');
+        // console.log('%c— Bruno', 'color: #777777');
     }
 
     hide()
@@ -148,25 +148,25 @@ export default class ThreejsJourney
 
     start()
     {
-        this.$container.classList.add('is-active')
+        // this.$container.classList.add('is-active')
 
-        window.requestAnimationFrame(() =>
-        {
-            this.next()
+        // window.requestAnimationFrame(() =>
+        // {
+        //     this.next()
 
-            TweenLite.delayedCall(4, () =>
-            {
-                this.next()
-            })
-            TweenLite.delayedCall(7, () =>
-            {
-                this.next()
-            })
-        })
+        //     TweenLite.delayedCall(4, () =>
+        //     {
+        //         this.next()
+        //     })
+        //     TweenLite.delayedCall(7, () =>
+        //     {
+        //         this.next()
+        //     })
+        // })
 
         this.shown = true
         
-        window.localStorage.setItem('threejsJourneySeenCount', this.seenCount + 1)
+        // window.localStorage.setItem('threejsJourneySeenCount', this.seenCount + 1)
     }
 
     updateMessages()
@@ -214,6 +214,6 @@ export default class ThreejsJourney
 
         this.step++
 
-        this.updateMessages()
+        // this.updateMessages()
     }
 }

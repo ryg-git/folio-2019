@@ -17,7 +17,10 @@ import matcapPurpleSource from '../models/matcaps/purple.png'
 import matcapBlueSource from '../models/matcaps/blue.png'
 import matcapYellowSource from '../models/matcaps/yellow.png'
 import matcapMetalSource from '../models/matcaps/metal.png'
-// import matcapGoldSource from '../models/matcaps/gold.png'
+import matcapGoldSource from '../models/matcaps/gold.png'
+import matcapPinkSYSource from '../models/matcaps/pink-sy.png'
+import matcapDarkBlueSYSource from '../models/matcaps/darkblue-sy.png'
+import matcapPurpleSYSource from '../models/matcaps/purple-sy.png'
 
 // Intro
 import introStaticBaseSource from '../models/intro/static/base.glb'
@@ -223,19 +226,34 @@ export default class Resources extends EventEmitter
         this.loader.load([
             // Matcaps
             { name: 'matcapBeige', source: matcapBeigeSource, type: 'texture' },
+            // { name: 'matcapBeige', source: matcapBlackSource, type: 'texture' },
+            // { name: 'matcapBlack', source: matcapBlackSource, type: 'texture' },
             { name: 'matcapBlack', source: matcapBlackSource, type: 'texture' },
-            { name: 'matcapOrange', source: matcapOrangeSource, type: 'texture' },
-            { name: 'matcapRed', source: matcapRedSource, type: 'texture' },
+            // { name: 'matcapOrange', source: matcapOrangeSource, type: 'texture' },
+            { name: 'matcapOrange', source: matcapPurpleSource, type: 'texture' },
+            // { name: 'matcapRed', source: matcapGraySource, type: 'texture' },
+            // { name: 'matcapRed', source: matcapRedSource, type: 'texture' },
+            { name: 'matcapRed', source: matcapPurpleSource, type: 'texture' },
+            // { name: 'matcapWhite', source: matcapBlackSource, type: 'texture' },
+            // { name: 'matcapWhite', source: matcapWhiteSource, type: 'texture' },
             { name: 'matcapWhite', source: matcapWhiteSource, type: 'texture' },
-            { name: 'matcapGreen', source: matcapGreenSource, type: 'texture' },
-            { name: 'matcapBrown', source: matcapBrownSource, type: 'texture' },
+            // { name: 'matcapWhite', source: matcapWhiteSource, type: 'texture' },
+            // { name: 'matcapGreen', source: matcapGreenSource, type: 'texture' },
+            { name: 'matcapGreen', source: matcapBlueSource, type: 'texture' },
+            // { name: 'matcapGreen', source: matcapBlueSource, type: 'texture' },
+            // { name: 'matcapBrown', source: matcapBrownSource, type: 'texture' },
+            { name: 'matcapBrown', source: matcapMetalSource, type: 'texture' },
             { name: 'matcapGray', source: matcapGraySource, type: 'texture' },
             { name: 'matcapEmeraldGreen', source: matcapEmeraldGreenSource, type: 'texture' },
-            { name: 'matcapPurple', source: matcapPurpleSource, type: 'texture' },
+            // { name: 'matcapPurple', source: matcapPurpleSource, type: 'texture' },
+            { name: 'matcapPurple', source: matcapRedSource, type: 'texture' },
             { name: 'matcapBlue', source: matcapBlueSource, type: 'texture' },
             { name: 'matcapYellow', source: matcapYellowSource, type: 'texture' },
             { name: 'matcapMetal', source: matcapMetalSource, type: 'texture' },
-            // { name: 'matcapGold', source: matcapGoldSource, type: 'texture' },
+            { name: 'matcapGold', source: matcapGoldSource, type: 'texture' },
+            { name: 'matcapPinkSY', source: matcapPinkSYSource, type: 'texture' },
+            { name: 'matcapDarkBlueSY', source: matcapDarkBlueSYSource, type: 'texture' },
+            { name: 'matcapPurpleSY', source: matcapPurpleSYSource, type: 'texture' },
 
             // Intro
             { name: 'introStaticBase', source: introStaticBaseSource },

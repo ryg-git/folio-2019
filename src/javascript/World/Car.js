@@ -24,6 +24,11 @@ export default class Car
         this.container = new THREE.Object3D()
         this.position = new THREE.Vector3()
 
+        // this.materials.color.set( 0xffffff * Math.random() );
+
+        console.log('this.materials');
+        console.log(this.materials);
+
         // Debug
         if(this.debug)
         {
@@ -67,6 +72,9 @@ export default class Car
             this.models.backLightsReverse = this.resources.items.carDefaultBackLightsReverse
             this.models.wheel = this.resources.items.carDefaultWheel
         }
+
+        // console.log('this.models.chassis');
+        // console.log(this.models.chassis);
     }
 
     setMovement()
@@ -106,6 +114,16 @@ export default class Car
         this.chassis.offset = new THREE.Vector3(0, 0, - 0.28)
         this.chassis.object = this.objects.getConvertedMesh(this.models.chassis.scene.children)
         this.chassis.object.position.copy(this.physics.car.chassis.body.position)
+        // this.chassis.object.material.color.set( 0xffffff);
+        // this.chassis.object.children.forEach(element => {
+        //     if (element.material && !(element.material instanceof THREE.MeshBasicMaterial)) {
+        //         console.log('this.chassis.object material');
+        //         console.log(element.material.uniforms);
+        //         // element.material.uniforms.uIndirectColor.set(new THREE.Color(0x000000));
+        //         // element.material.uniforms.color.set(new THREE.Color(0x000000));
+        //         // element.material.color.set( 0xffffff * Math.random() );
+        //     }
+        // });
         this.chassis.oldPosition = this.chassis.object.position.clone()
         this.container.add(this.chassis.object)
 

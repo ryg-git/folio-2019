@@ -29,6 +29,8 @@ export default class Objects
     {
         this.parsers = {}
 
+
+        ////
         this.parsers.items = [
             // Shade
             {
@@ -38,6 +40,9 @@ export default class Objects
                     // Find material
                     const match = _mesh.name.match(/^shade([a-z]+)_?[0-9]{0,3}?/i)
                     const materialName = `${match[1].substring(0, 1).toLowerCase()}${match[1].substring(1)}` // PastalCase to camelCase
+
+                    // let material = materialName === 'red' ? this.materials.shades.items['darkBlueSY']: this.materials.shades.items[materialName]
+                    
                     let material = this.materials.shades.items[materialName]
 
                     // Default
@@ -227,6 +232,7 @@ export default class Objects
             if(_child instanceof THREE.Mesh)
             {
                 // Find parser and use default if not found
+                // console.log(_item.regex);
                 let parser = this.parsers.items.find((_item) => _child.name.match(_item.regex))
                 if(typeof parser === 'undefined')
                 {

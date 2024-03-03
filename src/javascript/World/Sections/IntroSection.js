@@ -22,9 +22,9 @@ export default class IntroSection
         this.container.updateMatrix()
 
         this.setStatic()
-        this.setInstructions()
-        this.setOtherInstructions()
-        this.setTitles()
+        // this.setInstructions()
+        // this.setOtherInstructions()
+        // this.setTitles()
         this.setTiles()
         this.setDikes()
     }
@@ -157,8 +157,51 @@ export default class IntroSection
         })
     }
 
+    setCountDown() {
+        let firstLetter = true;
+
+			let text = 'three.js',
+
+				bevelEnabled = true,
+
+				font = undefined,
+
+				fontName = 'optimer', // helvetiker, optimer, gentilis, droid sans, droid serif
+				fontWeight = 'bold'; // normal bold
+
+			const height = 20,
+				size = 70,
+				hover = 30,
+
+				curveSegments = 4,
+
+				bevelThickness = 2,
+				bevelSize = 1.5;
+
+			const mirror = true;
+
+			const fontMap = {
+
+				'helvetiker': 0,
+				'optimer': 1,
+				'gentilis': 2,
+				'droid/droid_sans': 3,
+				'droid/droid_serif': 4
+
+			};
+
+			const weightMap = {
+
+				'regular': 0,
+				'bold': 1
+
+			};
+
+    }
+
     setTitles()
     {
+
         // Title
         this.objects.add({
             base: this.resources.items.introBBase.scene,
