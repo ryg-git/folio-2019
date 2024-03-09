@@ -152,7 +152,7 @@ export default class Controls extends EventEmitter
         this.touch.joystick.$element.style.userSelect = 'none'
         this.touch.joystick.$element.style.position = 'fixed'
         this.touch.joystick.$element.style.bottom = '10px'
-        this.touch.joystick.$element.style.left = '10px'
+        this.touch.joystick.$element.style.right = '10px'
         this.touch.joystick.$element.style.width = '170px'
         this.touch.joystick.$element.style.height = '170px'
         this.touch.joystick.$element.style.borderRadius = '50%'
@@ -165,7 +165,7 @@ export default class Controls extends EventEmitter
         this.touch.joystick.$cursor = document.createElement('div')
         this.touch.joystick.$cursor.style.position = 'absolute'
         this.touch.joystick.$cursor.style.top = 'calc(50% - 30px)'
-        this.touch.joystick.$cursor.style.left = 'calc(50% - 30px)'
+        this.touch.joystick.$cursor.style.right = 'calc(50% - 30px)'
         this.touch.joystick.$cursor.style.width = '60px'
         this.touch.joystick.$cursor.style.height = '60px'
         this.touch.joystick.$cursor.style.border = '2px solid #ffffff'
@@ -173,12 +173,13 @@ export default class Controls extends EventEmitter
         this.touch.joystick.$cursor.style.boxSizing = 'border-box'
         this.touch.joystick.$cursor.style.pointerEvents = 'none'
         this.touch.joystick.$cursor.style.willChange = 'transform'
+        // this.touch.joystick.$cursor.style.right = '10px'
         this.touch.joystick.$element.appendChild(this.touch.joystick.$cursor)
 
         this.touch.joystick.$limit = document.createElement('div')
         this.touch.joystick.$limit.style.position = 'absolute'
         this.touch.joystick.$limit.style.top = 'calc(50% - 75px)'
-        this.touch.joystick.$limit.style.left = 'calc(50% - 75px)'
+        this.touch.joystick.$limit.style.right = 'calc(50% - 75px)'
         this.touch.joystick.$limit.style.width = '150px'
         this.touch.joystick.$limit.style.height = '150px'
         this.touch.joystick.$limit.style.border = '2px solid #ffffff'
@@ -320,7 +321,7 @@ export default class Controls extends EventEmitter
         this.touch.boost.$element.style.userSelect = 'none'
         this.touch.boost.$element.style.position = 'fixed'
         this.touch.boost.$element.style.bottom = 'calc(70px * 3 + 15px)'
-        this.touch.boost.$element.style.right = '0px'
+        this.touch.boost.$element.style.left = '0px'
         this.touch.boost.$element.style.width = '95px'
         this.touch.boost.$element.style.height = '70px'
         this.touch.boost.$element.style.transition = 'opacity 0.3s 0.4s'
@@ -332,7 +333,7 @@ export default class Controls extends EventEmitter
         this.touch.boost.$border = document.createElement('div')
         this.touch.boost.$border.style.position = 'absolute'
         this.touch.boost.$border.style.top = 'calc(50% - 30px)'
-        this.touch.boost.$border.style.left = 'calc(50% - 30px)'
+        this.touch.boost.$border.style.right = 'calc(50% - 30px)'
         this.touch.boost.$border.style.width = '60px'
         this.touch.boost.$border.style.height = '60px'
         this.touch.boost.$border.style.border = '2px solid #ffffff'
@@ -345,7 +346,7 @@ export default class Controls extends EventEmitter
         this.touch.boost.$icon = document.createElement('div')
         this.touch.boost.$icon.style.position = 'absolute'
         this.touch.boost.$icon.style.top = 'calc(50% - 13px)'
-        this.touch.boost.$icon.style.left = 'calc(50% - 11px)'
+        this.touch.boost.$icon.style.right = 'calc(50% - 11px)'
         this.touch.boost.$icon.style.width = '22px'
         this.touch.boost.$icon.style.height = '26px'
         this.touch.boost.$icon.style.backgroundImage = `url(${mobileDoubleTriangle})`
@@ -404,7 +405,7 @@ export default class Controls extends EventEmitter
         this.touch.forward.$element.style.userSelect = 'none'
         this.touch.forward.$element.style.position = 'fixed'
         this.touch.forward.$element.style.bottom = 'calc(70px * 2 + 15px)'
-        this.touch.forward.$element.style.right = '0px'
+        this.touch.forward.$element.style.left = '0px'
         this.touch.forward.$element.style.width = '95px'
         this.touch.forward.$element.style.height = '70px'
         this.touch.forward.$element.style.transition = 'opacity 0.3s 0.3s'
@@ -416,7 +417,7 @@ export default class Controls extends EventEmitter
         this.touch.forward.$border = document.createElement('div')
         this.touch.forward.$border.style.position = 'absolute'
         this.touch.forward.$border.style.top = 'calc(50% - 30px)'
-        this.touch.forward.$border.style.left = 'calc(50% - 30px)'
+        this.touch.forward.$border.style.right = 'calc(50% - 30px)'
         this.touch.forward.$border.style.width = '60px'
         this.touch.forward.$border.style.height = '60px'
         this.touch.forward.$border.style.border = '2px solid #ffffff'
@@ -429,7 +430,7 @@ export default class Controls extends EventEmitter
         this.touch.forward.$icon = document.createElement('div')
         this.touch.forward.$icon.style.position = 'absolute'
         this.touch.forward.$icon.style.top = 'calc(50% - 9px)'
-        this.touch.forward.$icon.style.left = 'calc(50% - 11px)'
+        this.touch.forward.$icon.style.right = 'calc(50% - 11px)'
         this.touch.forward.$icon.style.width = '22px'
         this.touch.forward.$icon.style.height = '18px'
         this.touch.forward.$icon.style.backgroundImage = `url(${mobileTriangle})`
@@ -486,7 +487,7 @@ export default class Controls extends EventEmitter
         this.touch.brake.$element.style.userSelect = 'none'
         this.touch.brake.$element.style.position = 'fixed'
         this.touch.brake.$element.style.bottom = 'calc(70px + 15px)'
-        this.touch.brake.$element.style.right = '0px'
+        this.touch.brake.$element.style.left = '0px'
         this.touch.brake.$element.style.width = '95px'
         this.touch.brake.$element.style.height = '70px'
         this.touch.brake.$element.style.transition = 'opacity 0.3s 0.2s'
@@ -498,7 +499,7 @@ export default class Controls extends EventEmitter
         this.touch.brake.$border = document.createElement('div')
         this.touch.brake.$border.style.position = 'absolute'
         this.touch.brake.$border.style.top = 'calc(50% - 30px)'
-        this.touch.brake.$border.style.left = 'calc(50% - 30px)'
+        this.touch.brake.$border.style.right = 'calc(50% - 30px)'
         this.touch.brake.$border.style.width = '60px'
         this.touch.brake.$border.style.height = '60px'
         this.touch.brake.$border.style.border = '2px solid #ffffff'
@@ -511,7 +512,7 @@ export default class Controls extends EventEmitter
         this.touch.brake.$icon = document.createElement('div')
         this.touch.brake.$icon.style.position = 'absolute'
         this.touch.brake.$icon.style.top = 'calc(50% - 7px)'
-        this.touch.brake.$icon.style.left = 'calc(50% - 7px)'
+        this.touch.brake.$icon.style.right = 'calc(50% - 7px)'
         this.touch.brake.$icon.style.width = '15px'
         this.touch.brake.$icon.style.height = '15px'
         this.touch.brake.$icon.style.backgroundImage = `url(${mobileCross})`
@@ -567,7 +568,7 @@ export default class Controls extends EventEmitter
         this.touch.backward.$element.style.userSelect = 'none'
         this.touch.backward.$element.style.position = 'fixed'
         this.touch.backward.$element.style.bottom = '15px'
-        this.touch.backward.$element.style.right = '0px'
+        this.touch.backward.$element.style.left = '0px'
         this.touch.backward.$element.style.width = '95px'
         this.touch.backward.$element.style.height = '70px'
         this.touch.backward.$element.style.transition = 'opacity 0.3s 0.1s'
@@ -579,7 +580,7 @@ export default class Controls extends EventEmitter
         this.touch.backward.$border = document.createElement('div')
         this.touch.backward.$border.style.position = 'absolute'
         this.touch.backward.$border.style.top = 'calc(50% - 30px)'
-        this.touch.backward.$border.style.left = 'calc(50% - 30px)'
+        this.touch.backward.$border.style.right = 'calc(50% - 30px)'
         this.touch.backward.$border.style.width = '60px'
         this.touch.backward.$border.style.height = '60px'
         this.touch.backward.$border.style.border = '2px solid #ffffff'
@@ -592,7 +593,7 @@ export default class Controls extends EventEmitter
         this.touch.backward.$icon = document.createElement('div')
         this.touch.backward.$icon.style.position = 'absolute'
         this.touch.backward.$icon.style.top = 'calc(50% - 9px)'
-        this.touch.backward.$icon.style.left = 'calc(50% - 11px)'
+        this.touch.backward.$icon.style.right = 'calc(50% - 11px)'
         this.touch.backward.$icon.style.width = '22px'
         this.touch.backward.$icon.style.height = '18px'
         this.touch.backward.$icon.style.backgroundImage = `url(${mobileTriangle})`
