@@ -6,11 +6,11 @@ import EventEmitter from './Utils/EventEmitter.js'
 // Matcaps
 import matcapBeigeSource from '../models/matcaps/beige.png'
 import matcapBlackSource from '../models/matcaps/black.png'
-import matcapOrangeSource from '../models/matcaps/orange.png'
+// import matcapOrangeSource from '../models/matcaps/orange.png'
 import matcapRedSource from '../models/matcaps/red.png'
 import matcapWhiteSource from '../models/matcaps/white.png'
-import matcapGreenSource from '../models/matcaps/green.png'
-import matcapBrownSource from '../models/matcaps/brown.png'
+// import matcapGreenSource from '../models/matcaps/green.png'
+// import matcapBrownSource from '../models/matcaps/brown.png'
 import matcapGraySource from '../models/matcaps/gray.png'
 import matcapEmeraldGreenSource from '../models/matcaps/emeraldGreen.png'
 import matcapPurpleSource from '../models/matcaps/purple.png'
@@ -139,9 +139,9 @@ import hornBaseSource from '../models/horn/base.glb'
 import hornCollisionSource from '../models/horn/collision.glb'
 
 // // Distinction A
-// import distinctionAStaticFloorShadowSource from '../models/distinctionA/static/floorShadow.png'
-// import distinctionAStaticBaseSource from '../models/distinctionA/static/base.glb'
-// import distinctionAStaticCollisionSource from '../models/distinctionA/static/collision.glb'
+import distinctionAStaticFloorShadowSource from '../models/distinctionA/static/floorShadow.png'
+import distinctionAStaticBaseSource from '../models/distinctionA/static/base.glb'
+import distinctionAStaticCollisionSource from '../models/distinctionA/static/collision.glb'
 
 // // Distinction B
 // import distinctionBStaticFloorShadowSource from '../models/distinctionB/static/floorShadow.png'
@@ -154,8 +154,8 @@ import hornCollisionSource from '../models/horn/collision.glb'
 // import distinctionCStaticCollisionSource from '../models/distinctionC/static/collision.glb'
 
 // // Cone
-// import coneBaseSource from '../models/cone/base.glb'
-// import coneCollisionSource from '../models/cone/collision.glb'
+import coneBaseSource from '../models/cone/base.glb'
+import coneCollisionSource from '../models/cone/collision.glb'
 
 // // Awwwards trophy
 // import awwwardsTrophyBaseSource from '../models/awwwardsTrophy/base.glb'
@@ -210,9 +210,14 @@ import wig2Source from '../models/wigs/wig2.glb'
 import wig3Source from '../models/wigs/wig3.glb'
 import wig4Source from '../models/wigs/wig4.glb'
 
+// font for textgeometry
+// import font1 from '../models/fonts/gentilis_bold.typeface.json'
+
 // // Egg
-// import eggBaseSource from '../models/egg/base.glb'
-// import eggCollisionSource from '../models/egg/collision.glb'
+import eggBaseSource from '../models/egg/base.glb'
+import eggCollisionSource from '../models/egg/collision.glb'
+
+import cupcakeBaseSource from '../models/cupcake/cupcake.glb'
 
 export default class Resources extends EventEmitter
 {
@@ -372,9 +377,9 @@ export default class Resources extends EventEmitter
             { name: 'hornCollision', source: hornCollisionSource },
 
             // // Distinction A
-            // { name: 'distinctionAStaticBase', source: distinctionAStaticBaseSource },
-            // { name: 'distinctionAStaticCollision', source: distinctionAStaticCollisionSource },
-            // { name: 'distinctionAStaticFloorShadow', source: distinctionAStaticFloorShadowSource, type: 'texture' },
+            { name: 'distinctionAStaticBase', source: distinctionAStaticBaseSource },
+            { name: 'distinctionAStaticCollision', source: distinctionAStaticCollisionSource },
+            { name: 'distinctionAStaticFloorShadow', source: distinctionAStaticFloorShadowSource, type: 'texture' },
 
             // // Distinction B
             // { name: 'distinctionBStaticBase', source: distinctionBStaticBaseSource },
@@ -387,8 +392,8 @@ export default class Resources extends EventEmitter
             // { name: 'distinctionCStaticFloorShadow', source: distinctionCStaticFloorShadowSource, type: 'texture' },
 
             // // Cone
-            // { name: 'coneBase', source: coneBaseSource },
-            // { name: 'coneCollision', source: coneCollisionSource },
+            { name: 'coneBase', source: coneBaseSource },
+            { name: 'coneCollision', source: coneCollisionSource },
 
             // // Awwwards trophy
             // { name: 'awwwardsTrophyBase', source: awwwardsTrophyBaseSource },
@@ -407,6 +412,7 @@ export default class Resources extends EventEmitter
             { name: 'bowlingBallCollision', source: bowlingBallCollisionSource },
 
             // Bownling ball
+            // { name: 'bowlingPinBase', source: bowlingPinBaseSource },
             { name: 'bowlingPinBase', source: bowlingPinBaseSource },
             { name: 'bowlingPinCollision', source: bowlingPinCollisionSource },
 
@@ -443,9 +449,20 @@ export default class Resources extends EventEmitter
             { name: 'wig3', source: wig3Source },
             { name: 'wig4', source: wig4Source },
 
+            // fonts
+            { name: 'font1', source: "./fonts/gentilis_regular.typeface.json", fontname: 'gentilis_bold'},
+
             // // Egg
-            // { name: 'eggBase', source: eggBaseSource },
-            // { name: 'eggCollision', source: eggCollisionSource },
+            { name: 'eggBase', source: eggBaseSource },
+            { name: 'eggCollision', source: eggCollisionSource },
+
+
+            { name: 'cupcakeBase', source: cupcakeBaseSource },
+            // { name: 'cupcakeBase',
+            // source: "./cupcake/cupcake.json",
+            // // source: "https://raw.githubusercontent.com/ellenprobst/sugar-3D/master/cupcake-lowpoly.json",
+            // fontname: 'cupcake'
+            // },
         ])
 
         this.loader.on('fileEnd', (_resource, _data) =>
@@ -460,6 +477,40 @@ export default class Resources extends EventEmitter
 
                 this.items[`${_resource.name}Texture`] = texture
             }
+
+            // Trigger progress
+            this.trigger('progress', [this.loader.loaded / this.loader.toLoad])
+        })
+        
+        this.loader.on('fontEnd', (_resource, _data) =>
+        {
+            this.items[_resource.name] = _data
+
+            // Texture
+            // if(_resource.type === 'texture')
+            // {
+            //     const texture = new THREE.Texture(_data)
+            //     texture.needsUpdate = true
+
+            //     this.items[`${_resource.name}Texture`] = texture
+            // }
+
+            // Trigger progress
+            this.trigger('progress', [this.loader.loaded / this.loader.toLoad])
+        })
+        
+        this.loader.on('cupcakeEnd', (_resource, _data) =>
+        {
+            this.items[_resource.name] = _data
+
+            // Texture
+            // if(_resource.type === 'texture')
+            // {
+            //     const texture = new THREE.Texture(_data)
+            //     texture.needsUpdate = true
+
+            //     this.items[`${_resource.name}Texture`] = texture
+            // }
 
             // Trigger progress
             this.trigger('progress', [this.loader.loaded / this.loader.toLoad])

@@ -101,6 +101,7 @@ export default class ProjectsSection
     {
         this.meshes = {}
 
+        // this.meshes.boardStructure = this.objects.getConvertedMesh(this.resources.items.cupcakeBase.scene.children, { })
         // this.meshes.boardStructure = this.objects.getConvertedMesh(this.resources.items.projectsBoardStructure.scene.children, { floorShadowTexture: this.resources.items.projectsBoardStructureFloorShadowTexture })
         this.resources.items.areaOpenTexture.magFilter = THREE.NearestFilter
         this.resources.items.areaOpenTexture.minFilter = THREE.LinearFilter
@@ -113,7 +114,7 @@ export default class ProjectsSection
     {
         this.list = [
             {
-                name: 'Three.js Journey',
+                name: 'ISLAMPUR HOME',
                 imageSources:
                 [
                     projectsThreejsJourneySlideASources,
@@ -124,7 +125,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsThreejsJourneyFloorTexture,
                 link:
                 {
-                    href: 'https://threejs-journey.com?c=p3',
+                    href: '',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
@@ -139,7 +140,7 @@ export default class ProjectsSection
                 ]
             },
             {
-                name: 'Madbox',
+                name: 'BUS STAND',
                 imageSources:
                 [
                     projectsMadboxSlideASources,
@@ -149,7 +150,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsMadboxFloorTexture,
                 link:
                 {
-                    href: 'https://madbox.io',
+                    href: '',
                     x: - 4.8,
                     y: - 4,
                     halfExtents:
@@ -165,7 +166,7 @@ export default class ProjectsSection
                 ]
             },
             {
-                name: 'Scout',
+                name: 'PETH NAKA',
                 imageSources:
                 [
                     projectsScoutSlideASources,
@@ -175,7 +176,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsScoutFloorTexture,
                 link:
                 {
-                    href: 'https://fromscout.com',
+                    href: '',
                     x: - 4.8,
                     y: - 2,
                     halfExtents:
@@ -189,7 +190,7 @@ export default class ProjectsSection
                 ]
             },
             {
-                name: 'Chartogne Taillet',
+                name: 'RETHARE',
                 imageSources:
                 [
                     projectsChartogneSlideASources,
@@ -199,7 +200,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsChartogneFloorTexture,
                 link:
                 {
-                    href: 'https://chartogne-taillet.com',
+                    href: '',
                     x: - 4.8,
                     y: - 3.3,
                     halfExtents:
@@ -210,13 +211,10 @@ export default class ProjectsSection
                 },
                 distinctions:
                 [
-                    { type: 'awwwards', x: 3.95, y: 4.15 },
-                    { type: 'fwa', x: 5.6, y: 4.15 },
-                    { type: 'cssda', x: 7.2, y: 4.15 }
                 ]
             },
             {
-                name: 'Zenly',
+                name: 'KARAD',
                 imageSources:
                 [
                     projectsZenlySlideASources,
@@ -226,7 +224,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsZenlyFloorTexture,
                 link:
                 {
-                    href: 'https://zen.ly',
+                    href: '',
                     x: - 4.8,
                     y: - 4.2,
                     halfExtents:
@@ -243,7 +241,7 @@ export default class ProjectsSection
                 ]
             },
             {
-                name: 'priorHoldings',
+                name: 'SATARA',
                 imageSources:
                 [
                     projectsPriorHoldingsSlideASources,
@@ -253,7 +251,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsPriorHoldingsFloorTexture,
                 link:
                 {
-                    href: 'https://prior.co.jp/discover/',
+                    href: '',
                     x: - 4.8,
                     y: - 3,
                     halfExtents:
@@ -264,13 +262,10 @@ export default class ProjectsSection
                 },
                 distinctions:
                 [
-                    { type: 'awwwards', x: 3.95, y: 4.15 },
-                    { type: 'fwa', x: 5.6, y: 4.15 },
-                    { type: 'cssda', x: 7.2, y: 4.15 }
                 ]
             },
             {
-                name: 'orano',
+                name: 'PUNE',
                 imageSources:
                 [
                     projectsOranoSlideASources,
@@ -280,7 +275,7 @@ export default class ProjectsSection
                 floorTexture: this.resources.items.projectsOranoFloorTexture,
                 link:
                 {
-                    href: 'https://orano.imm-g-prod.com/experience/innovation/en',
+                    href: '',
                     x: - 4.8,
                     y: - 3.4,
                     halfExtents:
@@ -291,38 +286,35 @@ export default class ProjectsSection
                 },
                 distinctions:
                 [
-                    { type: 'awwwards', x: 3.95, y: 4.15 },
-                    { type: 'fwa', x: 5.6, y: 4.15 },
-                    { type: 'cssda', x: 7.2, y: 4.15 }
                 ]
             },
-            {
-                name: 'citrixRedbull',
-                imageSources:
-                [
-                    projectsCitrixRedbullSlideASources,
-                    projectsCitrixRedbullSlideBSources,
-                    projectsCitrixRedbullSlideCSources
-                ],
-                floorTexture: this.resources.items.projectsCitrixRedbullFloorTexture,
-                link:
-                {
-                    href: 'https://thenewmobileworkforce.imm-g-prod.com/',
-                    x: - 4.8,
-                    y: - 4.4,
-                    halfExtents:
-                    {
-                        x: 3.2,
-                        y: 1.5
-                    }
-                },
-                distinctions:
-                [
-                    { type: 'awwwards', x: 3.95, y: 4.15 },
-                    { type: 'fwa', x: 5.6, y: 4.15 },
-                    { type: 'cssda', x: 7.2, y: 4.15 }
-                ]
-            },
+            // {
+            //     name: 'citrixRedbull',
+            //     imageSources:
+            //     [
+            //         projectsCitrixRedbullSlideASources,
+            //         projectsCitrixRedbullSlideBSources,
+            //         projectsCitrixRedbullSlideCSources
+            //     ],
+            //     floorTexture: this.resources.items.projectsCitrixRedbullFloorTexture,
+            //     link:
+            //     {
+            //         href: 'https://thenewmobileworkforce.imm-g-prod.com/',
+            //         x: - 4.8,
+            //         y: - 4.4,
+            //         halfExtents:
+            //         {
+            //             x: 3.2,
+            //             y: 1.5
+            //         }
+            //     },
+            //     distinctions:
+            //     [
+            //         { type: 'awwwards', x: 3.95, y: 4.15 },
+            //         { type: 'fwa', x: 5.6, y: 4.15 },
+            //         { type: 'cssda', x: 7.2, y: 4.15 }
+            //     ]
+            // },
             // {
             //     name: 'gleecChat',
             //     imageSources:
@@ -351,28 +343,28 @@ export default class ProjectsSection
             //         { type: 'cssda', x: 7.2, y: 4.15 }
             //     ]
             // },
-            {
-                name: 'keppler',
-                imageSources:
-                [
-                    projectsKepplerSlideASources,
-                    projectsKepplerSlideBSources,
-                    projectsKepplerSlideCSources
-                ],
-                floorTexture: this.resources.items.projectsKepplerFloorTexture,
-                link:
-                {
-                    href: 'https://brunosimon.github.io/keppler/',
-                    x: 2.75,
-                    y: - 1.1,
-                    halfExtents:
-                    {
-                        x: 3.2,
-                        y: 1.5
-                    }
-                },
-                distinctions: []
-            }
+            // {
+            //     name: 'keppler',
+            //     imageSources:
+            //     [
+            //         projectsKepplerSlideASources,
+            //         projectsKepplerSlideBSources,
+            //         projectsKepplerSlideCSources
+            //     ],
+            //     floorTexture: this.resources.items.projectsKepplerFloorTexture,
+            //     link:
+            //     {
+            //         href: 'https://brunosimon.github.io/keppler/',
+            //         x: 2.75,
+            //         y: - 1.1,
+            //         halfExtents:
+            //         {
+            //             x: 3.2,
+            //             y: 1.5
+            //         }
+            //     },
+            //     distinctions: []
+            // }
         ]
     }
 

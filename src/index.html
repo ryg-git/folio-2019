@@ -1,90 +1,201 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8" />
 
-    <title>Yashadanagar</title>
-    <meta name="description" content="Yashadanagar for my love" />
+        <title>Yashadanagar</title>
+        <meta name="description" content="Yashadanagar for my love" />
 
-    <meta itemprop=name content="Yashadanagar">
-    <meta itemprop="description" content="Our own town">
+        <meta itemprop="name" content="Yashadanagar" />
+        <meta itemprop="description" content="Our own town" />
 
-    <!-- <meta property="og:site_name" content="Yashadanagar - Creative developer"> -->
-    <!-- <meta property="og:type" content="website"> -->
-    <!-- <meta property="og:url" content="https://bruno-simon.com"> -->
-    <!-- <meta property="og:title" content="Yashadanagar - Creative developer"> -->
-    <!-- <meta property="og:description" content="Creative developer living in Paris, freelancer, former lead developer at Immersive Garden, former developer at Uzik and teacher."> -->
-    <!-- <meta property="og:image" content="https://bruno-simon.com/social/share-1200x630.png"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="application-name" content="Yashadanagar" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#ffffff" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=block"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <canvas class="canvas js-canvas"></canvas>
+        <style>
+            /* Check out my website!
+https://the-best-codes.github.io/?codepen
+*/
 
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#ff8908"> -->
-    <!-- <meta name="apple-mobile-web-app-title" content="Yashadanagar"> -->
-    <meta name="application-name" content="Yashadanagar">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=block" rel="stylesheet">
-</head>
-<body>
+            @keyframes moveGradient {
+                0% {
+                    background-position: 0% 0%;
+                }
 
-    <canvas class="canvas js-canvas"></canvas>
+                100% {
+                    background-position: 100% 0%;
+                }
+            }
 
-    <!-- <div class="threejs-journey is-hover-none js-threejs-journey">
-        <div class="message js-message">
-            <div class="boy">
-                <div class="variant is-hi">
-                    <div class="body"></div>
-                    <div class="arm js-boy-arm"></div>
-                </div>
-                <div class="variant is-yay"></div>
-                <div class="variant is-shrugging"></div>
-            </div>
-            <div class="bubble">
-                <div class="text">Hey! You seem to really enjoy my portfolio.</div>
-                <div class="tip"></div>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: calc(100vh - 20px);
+                /* Reduce height to avoid scrollbars */
+                background: linear-gradient(
+                    45deg,
+                    rgba(207, 159, 255, 0.8),
+                    rgba(255, 105, 180, 0.75),
+                    rgba(255, 192, 203, 0.9)
+                );
+                background-size: 200% 200%;
+                /* Increase the size to allow movement */
+                animation: moveGradient 10s ease-in-out infinite alternate;
+                /* Adjust the duration as needed */
+            }
+
+            .heart {
+                display: inline-block;
+                width: 200px;
+                aspect-ratio: 1;
+                border-image: radial-gradient(red 69%, #0000 70%) 84.5%/50%;
+                clip-path: polygon(-41% 0, 50% 91%, 141% 0);
+                transition: transform 0.3s ease;
+            }
+
+            .heart:hover {
+                transform: scale(1.2);
+            }
+
+            .heart.clicked {
+                transform: scale(1.3);
+            }
+
+            .heart.clicked > .heart-text {
+                color: white !important;
+            }
+
+            .heart-text {
+                margin-top: 40px;
+                font-size: 16px;
+                user-select: none;
+                color: red;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: calc(100% - 20px);
+                /* Reduce width to avoid scrollbars */
+                height: calc(100% - 20px);
+                /* Reduce height to avoid scrollbars */
+                pointer-events: none;
+                z-index: -2;
+            }
+
+            .instructions {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                user-select: none;
+                pointer-events: none;
+                color: white;
+                font-size: 14px;
+                transform: translate(-50%, 20px);
+                transition: all 0.3s ease;
+                text-align: center;
+                opacity: 0;
+            }
+
+            .heart:hover .instructions {
+                transform: translate(-50%, -40px);
+                opacity: 1;
+            }
+
+            /* On mobile devices, show the intructions by default (mobile can't hover) */
+            @media (max-width: 600px) {
+                .instructions {
+                    transform: translate(-50%, -40px);
+                    opacity: 1;
+                }
+            }
+
+            .heart.clicked .instructions {
+                opacity: 0;
+            }
+        </style>
+        <div class="center" style="display: none;">
+            <div class="heart" onclick="toggle(this)">
+                <p
+                    id="textInner"
+                    class="heart-text"
+                    style="opacity: 0; display: none"
+                >
+                    Thank you!
+                </p>
+                <p class="instructions">touch me!</p>
             </div>
         </div>
-        <div class="message js-message">
-            <div class="bubble">
-                <div class="text">Would you like to learn how to create cool websites like this?</div>
-                <div class="tip"></div>
-            </div>
-        </div>
-        <div class="message js-message is-answers">
-            <a href="#" class="answer is-no js-no">
-                <span class="background"></span>
-                <span class="hover"></span>
-                <span class="label">Nah, I'm good</span>
-            </a>
-            <a href="https://threejs-journey.com?c=p1" target="_blank" rel="noopener" class="answer is-yes js-yes">
-                <span class="background"></span>
-                <span class="hover"></span>
-                <span class="label">Yes, teach me!</span>
-            </a>
-        </div>
-        <div class="message js-message">
-            <div class="bubble">
-                <div class="text">Alright then.<br>Have fun and try not to break my car!</div>
-                <div class="tip"></div>
-            </div>
-        </div>
-    </div>
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest"></script>
+        <script>
+            function toggle(element) {
+                element.classList.toggle("clicked");
+                if (element.classList.contains("clicked")) {
+                    document.getElementById("textInner").style.display =
+                        "block";
+                    setTimeout(() => {
+                        document.getElementById("textInner").style.opacity =
+                            "1";
+                    }, 100);
+                    createConfetti();
+                } else {
+                    document.getElementById("textInner").style.opacity = "0";
+                    setTimeout(() => {
+                        document.getElementById("textInner").style.display =
+                            "none";
+                    }, 300);
+                }
+            }
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3966601-5"></script>
-    <script>
-        window.dataLayer = window.dataLayer || []
-        function gtag(){dataLayer.push(arguments)}
-        gtag('js', new Date())
-        gtag('config', 'UA-3966601-5')
-    </script> -->
-
-</body>
+            function createConfetti() {
+                // Create a canvas element and get its context
+                const canvas = document.createElement("canvas");
+                const context = canvas.getContext("2d");
+                // Define the emoji shape
+                const emojiShape = confetti.shapeFromText({
+                    text: "❤️", // You can use any emoji here
+                    scalar: 3,
+                });
+                // Call the confetti function with the emoji shape and other options
+                confetti({
+                    particleCount: 225, // You can change the number of confetti particles
+                    scalar: 3, // Make it a bit larger
+                    angle: 90, // You can change the angle of the confetti launch
+                    spread: 360, // You can change the spread of the confetti launch
+                    startVelocity: 25, // You can change the initial velocity of the confetti particles
+                    decay: 0.95, // You can change the decay rate of the confetti particles
+                    shapes: [emojiShape], // You can pass an array of shapes to use as confetti particles
+                    origin: {
+                        x: 0.5,
+                        y: 0.4,
+                    }, // You can change the origin of the confetti launch
+                    zIndex: -1, // You can change the z-index of the confetti canvas
+                });
+            }
+        </script>
+    </body>
 </html>

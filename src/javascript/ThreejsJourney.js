@@ -10,92 +10,92 @@ export default class ThreejsJourney
         this.world = _options.world
 
         // Setup
-        this.$container = document.querySelector('.js-threejs-journey')
-        // this.$messages = [...this.$container.querySelectorAll('.js-message')]
+        // this.$container = document.querySelector('.js-threejs-journey')
+        // this.$messages = [...this.$container.querySelectorAll('.center')]
         // this.$yes = this.$container.querySelector('.js-yes')
         // this.$no = this.$container.querySelector('.js-no')
-        this.step = 0
+        // this.step = 0
         // this.maxStep = this.$messages.length - 1
-        this.seenCount = window.localStorage.getItem('threejsJourneySeenCount') || 0
-        this.seenCount = parseInt(this.seenCount)
-        this.shown = false
-        this.traveledDistance = 0
-        this.minTraveledDistance = (this.config.debug ? 5 : 75) * (this.seenCount + 1)
-        this.prevent = !!window.localStorage.getItem('threejsJourneyPrevent')
+        // this.seenCount = window.localStorage.getItem('threejsJourneySeenCount') || 0
+        // this.seenCount = parseInt(this.seenCount)
+        // this.shown = false
+        // this.traveledDistance = 0
+        // this.minTraveledDistance = (this.config.debug ? 5 : 75) * (this.seenCount + 1)
+        // this.prevent = !!window.localStorage.getItem('threejsJourneyPrevent')
 
-        if(this.config.debug)
-            this.start()
+        // if(this.config.debug)
+        //     this.start()
         
-        if(this.prevent)
+        // if(this.prevent)
             return
 
         // this.setYesNo()
-        this.setLog()
+        // this.setLog()
 
-        this.time.on('tick', () =>
-        {
-            if(this.world.physics)
-            {
-                this.traveledDistance += this.world.physics.car.forwardSpeed
+        // this.time.on('tick', () =>
+        // {
+        //     if(this.world.physics)
+        //     {
+        //         this.traveledDistance += this.world.physics.car.forwardSpeed
 
-                if(!this.config.touch && !this.shown && this.traveledDistance > this.minTraveledDistance)
-                {
-                    this.start()
-                }
-            }
-        })
+        //         if(!this.config.touch && !this.shown && this.traveledDistance > this.minTraveledDistance)
+        //         {
+        //             this.start()
+        //         }
+        //     }
+        // })
     }
 
     setYesNo()
     {
         // Clicks
-        this.$yes.addEventListener('click', () =>
-        {
-            TweenLite.delayedCall(2, () =>
-            {
-                this.hide()
-            })
-            window.localStorage.setItem('threejsJourneyPrevent', 1)
-        })
+        // this.$yes.addEventListener('click', () =>
+        // {
+        //     TweenLite.delayedCall(2, () =>
+        //     {
+        //         this.hide()
+        //     })
+        //     window.localStorage.setItem('threejsJourneyPrevent', 1)
+        // })
 
-        this.$no.addEventListener('click', () =>
-        {
-            this.next()
+        // this.$no.addEventListener('click', () =>
+        // {
+        //     this.next()
 
-            TweenLite.delayedCall(5, () =>
-            {
-                this.hide()
-            })
-        })
+        //     TweenLite.delayedCall(5, () =>
+        //     {
+        //         this.hide()
+        //     })
+        // })
 
-        // Hovers
-        this.$yes.addEventListener('mouseenter', () =>
-        {
-            this.$container.classList.remove('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.add('is-hover-yes')
-        })
+        // // Hovers
+        // this.$yes.addEventListener('mouseenter', () =>
+        // {
+        //     this.$container.classList.remove('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.add('is-hover-yes')
+        // })
 
-        this.$no.addEventListener('mouseenter', () =>
-        {
-            this.$container.classList.remove('is-hover-none')
-            this.$container.classList.add('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$no.addEventListener('mouseenter', () =>
+        // {
+        //     this.$container.classList.remove('is-hover-none')
+        //     this.$container.classList.add('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
 
-        this.$yes.addEventListener('mouseleave', () =>
-        {
-            this.$container.classList.add('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$yes.addEventListener('mouseleave', () =>
+        // {
+        //     this.$container.classList.add('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
 
-        this.$no.addEventListener('mouseleave', () =>
-        {
-            this.$container.classList.add('is-hover-none')
-            this.$container.classList.remove('is-hover-no')
-            this.$container.classList.remove('is-hover-yes')
-        })
+        // this.$no.addEventListener('mouseleave', () =>
+        // {
+        //     this.$container.classList.add('is-hover-none')
+        //     this.$container.classList.remove('is-hover-no')
+        //     this.$container.classList.remove('is-hover-yes')
+        // })
     }
 
     setLog()
@@ -164,7 +164,7 @@ export default class ThreejsJourney
         //     })
         // })
 
-        this.shown = true
+        // this.shown = true
         
         // window.localStorage.setItem('threejsJourneySeenCount', this.seenCount + 1)
     }

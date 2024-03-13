@@ -44,5 +44,8 @@
   "staticFiles": {
     "staticPath": "static",
     "watcherGlob": "**"
+  },
+  "dependencies": {
+    "simplex-noise": "^4.0.1"
   }
 }

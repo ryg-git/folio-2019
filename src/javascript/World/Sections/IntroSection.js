@@ -23,8 +23,8 @@ export default class IntroSection
 
         this.setStatic()
         // this.setInstructions()
-        // this.setOtherInstructions()
-        // this.setTitles()
+        this.setOtherInstructions()
+        this.setTitles()
         this.setTiles()
         this.setDikes()
     }
@@ -62,59 +62,14 @@ export default class IntroSection
 
         this.instructions.arrows.label.mesh = new THREE.Mesh(this.instructions.arrows.label.geometry, this.instructions.arrows.label.material)
         this.container.add(this.instructions.arrows.label.mesh)
-
-        if(!this.config.touch)
-        {
-            // Keys
-            this.instructions.arrows.up = this.objects.add({
-                base: this.resources.items.introArrowKeyBase.scene,
-                collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0, 0, 0),
-                rotation: new THREE.Euler(0, 0, 0),
-                duplicated: true,
-                shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
-                mass: 1.5,
-                soundName: 'brick'
-            })
-            this.instructions.arrows.down = this.objects.add({
-                base: this.resources.items.introArrowKeyBase.scene,
-                collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0, - 0.8, 0),
-                rotation: new THREE.Euler(0, 0, Math.PI),
-                duplicated: true,
-                shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
-                mass: 1.5,
-                soundName: 'brick'
-            })
-            this.instructions.arrows.left = this.objects.add({
-                base: this.resources.items.introArrowKeyBase.scene,
-                collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(- 0.8, - 0.8, 0),
-                rotation: new THREE.Euler(0, 0, Math.PI * 0.5),
-                duplicated: true,
-                shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
-                mass: 1.5,
-                soundName: 'brick'
-            })
-            this.instructions.arrows.right = this.objects.add({
-                base: this.resources.items.introArrowKeyBase.scene,
-                collision: this.resources.items.introArrowKeyCollision.scene,
-                offset: new THREE.Vector3(0.8, - 0.8, 0),
-                rotation: new THREE.Euler(0, 0, - Math.PI * 0.5),
-                duplicated: true,
-                shadow: { sizeX: 1, sizeY: 1, offsetZ: - 0.2, alpha: 0.5 },
-                mass: 1.5,
-                soundName: 'brick'
-            })
-        }
     }
 
     setOtherInstructions()
     {
-        if(this.config.touch)
-        {
-            return
-        }
+        // if(this.config.touch)
+        // {
+        //     return
+        // }
 
         this.otherInstructions = {}
         this.otherInstructions.x = 16
@@ -137,74 +92,110 @@ export default class IntroSection
         this.otherInstructions.label.texture.magFilter = THREE.NearestFilter
         this.otherInstructions.label.texture.minFilter = THREE.LinearFilter
 
-        this.otherInstructions.label.material = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: this.otherInstructions.label.texture, color: 0xffffff, depthWrite: false, opacity: 0 })
+        this.otherInstructions.label.material = new THREE.MeshBasicMaterial({ transparent: true, alphaMap: this.otherInstructions.label.texture, color: 0xffffff, depthWrite: false, opacity: 1 })
 
         this.otherInstructions.label.mesh = new THREE.Mesh(this.otherInstructions.label.geometry, this.otherInstructions.label.material)
         this.otherInstructions.label.mesh.matrixAutoUpdate = false
         this.otherInstructions.container.add(this.otherInstructions.label.mesh)
 
         // Horn
-        this.otherInstructions.horn = this.objects.add({
-            base: this.resources.items.hornBase.scene,
-            collision: this.resources.items.hornCollision.scene,
-            offset: new THREE.Vector3(this.otherInstructions.x + 1.25, this.otherInstructions.y - 2.75, 0.2),
-            rotation: new THREE.Euler(0, 0, 0.5),
-            duplicated: true,
-            shadow: { sizeX: 1.65, sizeY: 0.75, offsetZ: - 0.1, alpha: 0.4 },
-            mass: 1.5,
-            soundName: 'horn',
-            sleep: false
-        })
+        // this.otherInstructions.horn = this.objects.add({
+        //     base: this.resources.items.hornBase.scene,
+        //     collision: this.resources.items.hornCollision.scene,
+        //     offset: new THREE.Vector3(this.otherInstructions.x + 10.25, this.otherInstructions.y - 38.75, 0.2),
+        //     rotation: new THREE.Euler(0, 0, 0.5),
+        //     duplicated: true,
+        //     shadow: { sizeX: 1.65, sizeY: 0.75, offsetZ: - 0.1, alpha: 0.4 },
+        //     mass: 1.5,
+        //     soundName: 'horn',
+        //     sleep: false
+        // })
     }
 
-    setCountDown() {
-        let firstLetter = true;
+    getTextGeometryScene(txt) {
+        const txtgeometry = new THREE.TextGeometry( txt, {
+            font: this.resources.items.font1,
+            size: 1.5,
+            height: 0.4,
+            curveSegments: 2,
+            bevelEnabled: true,
+            bevelThickness: 0.01,
+            bevelSize: 0.05,
+            bevelOffset: 0,
+            bevelSegments: 5
+        } );
 
-			let text = 'three.js',
+        const scene = new THREE.Scene();
 
-				bevelEnabled = true,
+        // const geometry = new THREE.BoxGeometry( 0.7, 0.4, 2 );
+        const material = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
+        const firstMesh = new THREE.Mesh( txtgeometry, material );
 
-				font = undefined,
+        // firstMesh.name = 'ydn_center_01';
+        firstMesh.name = `ydn_${txt}_${Date.now()}`;
+        firstMesh.rotation.x = Math.PI / 2;
+        firstMesh.position.z = -0.5;
+        firstMesh.position.x = -0.4;
+        // firstMesh.position.y = -0.2;
+        // firstMesh.position.set(0, -10, 0);
+        
+        // firstMesh.rotation.set(new THREE.Vector3( 0, Math.PI / 2, 0));
 
-				fontName = 'optimer', // helvetiker, optimer, gentilis, droid sans, droid serif
-				fontWeight = 'bold'; // normal bold
+        scene.add(firstMesh);
 
-			const height = 20,
-				size = 70,
-				hover = 30,
-
-				curveSegments = 4,
-
-				bevelThickness = 2,
-				bevelSize = 1.5;
-
-			const mirror = true;
-
-			const fontMap = {
-
-				'helvetiker': 0,
-				'optimer': 1,
-				'gentilis': 2,
-				'droid/droid_sans': 3,
-				'droid/droid_serif': 4
-
-			};
-
-			const weightMap = {
-
-				'regular': 0,
-				'bold': 1
-
-			};
-
+        return scene;
     }
 
     setTitles()
     {
+        
+        // const firstLetter = this.getTextGeometryScene('1')
+
+        // this.objects.add({
+        //     base: firstLetter,
+        //     collision: this.resources.items.introBCollision.scene,
+        //     // base: this.resources.items.introRBase.scene,
+        //     // collision: this.resources.items.introRCollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0),
+        //     shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
+        //     mass: 1.5,
+        //     soundName: 'brick'
+        // })
 
         // Title
+        // const secondLetter = this.getTextGeometryScene('1')
+
+        // this.objects.add({
+        //     // base: this.resources.items.introBBase.scene,
+        //     // collision: this.resources.items.introBCollision.scene,
+        //     base: secondLetter,
+        //     collision: this.resources.items.introRCollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0),
+        //     shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
+        //     mass: 1.5,
+        //     soundName: 'brick'
+        // })
+
+        var countDownDate = new Date("May 2, 2024 12:00:00").getTime();
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+
+        var days = `${Math.floor(distance / (1000 * 60 * 60 * 24))}`.padStart(2, '0');
+        var hours = `${Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        )}`.padStart(2, '0');
+        var minutes = `${Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))}`.padStart(2, '0');
+  
+
+
+
+        const firstLetter = this.getTextGeometryScene(`${days}`[0])
+
         this.objects.add({
-            base: this.resources.items.introBBase.scene,
+            // base: this.resources.items.introUBase.scene,
+            base: firstLetter,
             collision: this.resources.items.introBCollision.scene,
             offset: new THREE.Vector3(0, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
@@ -212,110 +203,146 @@ export default class IntroSection
             mass: 1.5,
             soundName: 'brick'
         })
+
+        const secondLetter = this.getTextGeometryScene(`${days}`[1])
         this.objects.add({
-            base: this.resources.items.introRBase.scene,
+            base: secondLetter,
             collision: this.resources.items.introRCollision.scene,
             offset: new THREE.Vector3(0, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
+            duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+
+
+        const dLetter = this.getTextGeometryScene('D')
         this.objects.add({
-            base: this.resources.items.introUBase.scene,
+            base: dLetter,
             collision: this.resources.items.introUCollision.scene,
             offset: new THREE.Vector3(0, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
+            duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+
+
+        // this.objects.add({
+        //     base: this.resources.items.introSBase.scene,
+        //     collision: this.resources.items.introSCollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0),
+        //     shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
+        //     mass: 1.5,
+        //     soundName: 'brick'
+        // })
+
+        // this.objects.add({
+        //     base: this.resources.items.introIBase.scene,
+        //     collision: this.resources.items.introICollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0),
+        //     shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
+        //     mass: 1.5,
+        //     soundName: 'brick'
+        // })
+
+
+        const hFirstLetter = this.getTextGeometryScene(`${hours}`[0])
         this.objects.add({
-            base: this.resources.items.introNBase.scene,
+            base: hFirstLetter,
+            // collision: this.resources.items.introMCollision.scene,
             collision: this.resources.items.introNCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
+            offset: new THREE.Vector3(1, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
-            duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+
+        const hSecondLetter = this.getTextGeometryScene(`${hours}`[1])
         this.objects.add({
-            base: this.resources.items.introOBase.scene,
+            base: hSecondLetter,
+            // collision: this.resources.items.introOCollision.scene,
             collision: this.resources.items.introOCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
+            offset: new THREE.Vector3(1, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
-            duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+
+        const hLetter = this.getTextGeometryScene('H')
         this.objects.add({
-            base: this.resources.items.introSBase.scene,
+            base: hLetter,
             collision: this.resources.items.introSCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0),
-            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
-            mass: 1.5,
-            soundName: 'brick'
-        })
-        this.objects.add({
-            base: this.resources.items.introIBase.scene,
-            collision: this.resources.items.introICollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0),
-            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
-            mass: 1.5,
-            soundName: 'brick'
-        })
-        this.objects.add({
-            base: this.resources.items.introMBase.scene,
-            collision: this.resources.items.introMCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0),
-            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
-            mass: 1.5,
-            soundName: 'brick'
-        })
-        this.objects.add({
-            base: this.resources.items.introOBase.scene,
-            collision: this.resources.items.introOCollision.scene,
-            offset: new THREE.Vector3(3.95, 0, 0),
+            offset: new THREE.Vector3(0.8, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
             duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+
+
+        const mFirstLetter = this.getTextGeometryScene(`${minutes}`[0])
         this.objects.add({
-            base: this.resources.items.introNBase.scene,
+            base: mFirstLetter,
             collision: this.resources.items.introNCollision.scene,
-            offset: new THREE.Vector3(5.85, 0, 0),
+            offset: new THREE.Vector3(4.8, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
             duplicated: true,
             shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+        
+        const mSecondLetter = this.getTextGeometryScene(`${minutes}`[1])
         this.objects.add({
-            base: this.resources.items.introCreativeBase.scene,
-            collision: this.resources.items.introCreativeCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
-            rotation: new THREE.Euler(0, 0, 0.25),
-            shadow: { sizeX: 5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
-            mass: 1.5,
-            sleep: false,
-            soundName: 'brick'
-        })
-        this.objects.add({
-            base: this.resources.items.introDevBase.scene,
-            collision: this.resources.items.introDevCollision.scene,
-            offset: new THREE.Vector3(0, 0, 0),
+            base: mSecondLetter,
+            collision: this.resources.items.introNCollision.scene,
+            offset: new THREE.Vector3(5.7, 0, 0),
             rotation: new THREE.Euler(0, 0, 0),
-            shadow: { sizeX: 2.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
+            duplicated: true,
+            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
             mass: 1.5,
             soundName: 'brick'
         })
+        
+        const mLetter = this.getTextGeometryScene('M')
+        this.objects.add({
+            base: mLetter,
+            collision: this.resources.items.introNCollision.scene,
+            offset: new THREE.Vector3(6.7, 0, 0),
+            rotation: new THREE.Euler(0, 0, 0),
+            duplicated: true,
+            shadow: { sizeX: 1.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.4 },
+            mass: 1.5,
+            soundName: 'brick'
+        })
+
+        // this.objects.add({
+        //     base: this.resources.items.introCreativeBase.scene,
+        //     collision: this.resources.items.introCreativeCollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0.25),
+        //     shadow: { sizeX: 5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
+        //     mass: 1.5,
+        //     sleep: false,
+        //     soundName: 'brick'
+        // })
+        // this.objects.add({
+        //     base: this.resources.items.introDevBase.scene,
+        //     collision: this.resources.items.introDevCollision.scene,
+        //     offset: new THREE.Vector3(0, 0, 0),
+        //     rotation: new THREE.Euler(0, 0, 0),
+        //     shadow: { sizeX: 2.5, sizeY: 1.5, offsetZ: - 0.6, alpha: 0.3 },
+        //     mass: 1.5,
+        //     soundName: 'brick'
+        // })
     }
 
     setTiles()

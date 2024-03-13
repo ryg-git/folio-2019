@@ -18,17 +18,61 @@ export default class CrossroadsSection
         this.container = new THREE.Object3D()
         this.container.matrixAutoUpdate = false
 
-        // this.setStatic()
+        this.setStatic()
         this.setTiles()
     }
 
     setStatic()
     {
+        // this.objects.add({
+        //     base: this.resources.items.crossroadsStaticBase.scene,
+        //     collision: this.resources.items.crossroadsStaticCollision.scene,
+        //     floorShadowTexture: this.resources.items.crossroadsStaticFloorShadowTexture,
+        //     offset: new THREE.Vector3(this.x, this.y, 0),
+        //     mass: 0
+        // })
+
+        const txt = 'YashaDaNagar'
+        // const txt = 'यशदानगर'
+
+        const txtgeometry = new THREE.TextGeometry( txt, {
+            font: this.resources.items.font1,
+            size: 2,
+            height: 1,
+            curveSegments: 10,
+            bevelEnabled: true,
+            bevelThickness: 0.01,
+            bevelSize: 0.05,
+            bevelOffset: 0,
+            bevelSegments: 5
+        } );
+
+        const scene = new THREE.Scene();
+
+        // const geometry = new THREE.BoxGeometry( 0.7, 0.4, 2 );
+        const material = new THREE.MeshBasicMaterial( {color: 0xffff00} ); 
+        const titleMesh = new THREE.Mesh( txtgeometry, material );
+
+        // titleMesh.name = 'ydn_center_01';
+        titleMesh.name = `ydn_${txt}_${Date.now()}`;
+        titleMesh.rotation.x = Math.PI / 2;
+        // titleMesh.position.z = -0.5;
+        // titleMesh.position.x = -0.4;
+        // titleMesh.position.y = -0.2;
+        // titleMesh.position.set(0, -10, 0);
+        
+        // titleMesh.rotation.set(new THREE.Vector3( 0, Math.PI / 2, 0));
+
+        scene.add(titleMesh);
+
+        // return scene;
+
         this.objects.add({
-            base: this.resources.items.crossroadsStaticBase.scene,
-            collision: this.resources.items.crossroadsStaticCollision.scene,
+            base: scene,
+            // collision: this.resources.items.crossroadsStaticCollision.scene,
+            collision: scene,
             floorShadowTexture: this.resources.items.crossroadsStaticFloorShadowTexture,
-            offset: new THREE.Vector3(this.x, this.y, 0),
+            offset: new THREE.Vector3(this.x - 10, this.y, 1.5),
             mass: 0
         })
     }

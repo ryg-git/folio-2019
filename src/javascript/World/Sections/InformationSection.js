@@ -123,7 +123,7 @@ export default class InformationSection
             })
             item.area.on('interact', () =>
             {
-                window.open(_option.href, '_blank')
+                // window.open(_option.href, '_blank')
             })
 
             // Texture

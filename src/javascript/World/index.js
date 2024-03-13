@@ -14,6 +14,7 @@ import ProjectsSection from './Sections/ProjectsSection.js'
 import CrossroadsSection from './Sections/CrossroadsSection.js'
 import InformationSection from './Sections/InformationSection.js'
 import PlaygroundSection from './Sections/PlaygroundSection.js'
+//
 // import DistinctionASection from './Sections/DistinctionASection.js'
 // import DistinctionBSection from './Sections/DistinctionBSection.js'
 // import DistinctionCSection from './Sections/DistinctionCSection.js'
@@ -75,7 +76,7 @@ export default class
         this.setTiles()
         this.setWalls()
         this.setSections()
-        this.setEasterEggs()
+        // this.setEasterEggs()
     }
 
     setReveal()

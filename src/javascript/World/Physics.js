@@ -631,6 +631,7 @@ export default class Physics
     {
         // Set up
         const collision = {}
+        //
 
         collision.model = {}
         collision.model.meshes = []

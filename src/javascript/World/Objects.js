@@ -215,6 +215,7 @@ export default class Objects
 
     getConvertedMesh(_children, _options = {})
     {
+        //
         const container = new THREE.Object3D()
         const center = new THREE.Vector3()
 
@@ -319,9 +320,11 @@ export default class Objects
             sleep
         })
 
+
+        // comment this this
         for(const _child of object.container.children)
         {
-            _child.position.sub(object.collision.center)
+            if(!_child.name.startsWith('ydn')) _child.position.sub(object.collision.center)
         }
 
         // Sound
@@ -355,5 +358,20 @@ export default class Objects
         this.items.push(object)
 
         return object
+    }
+
+    addObject3D(object, opts = {}) {
+        if (object && object.scene.children.length) {
+            // this.items.push(object.scene.children[0]);
+            if (opts.loc) {
+                const cc = object.scene.children[0];
+                cc.scale.set(2, 2, 2);
+                cc.rotation.x = Math.PI / 2;
+                const ambientLight = new THREE.AmbientLight(0xFFFFFF);
+                ambientLight.intensity = 1;
+                object.scene.add(ambientLight);
+                this.container.add(object.scene);
+            }
+        }
     }
 }

@@ -24,10 +24,12 @@ export default class Car
         this.container = new THREE.Object3D()
         this.position = new THREE.Vector3()
 
+        this.$container = document.querySelector('.center')
+
         // this.materials.color.set( 0xffffff * Math.random() );
 
-        console.log('this.materials');
-        console.log(this.materials);
+        // console.log('this.materials');
+        // console.log(this.materials);
 
         // Debug
         if(this.debug)
@@ -105,6 +107,7 @@ export default class Car
             {
                 this.sounds.play('screech')
             }
+            // this.$container.style.display = 'none';
         })
     }
 
